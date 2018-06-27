@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdlib.h>
 
-double get_thickness(double l, double L, double x, double tau_xy, double wg_1, double wg_2, double wgs_1, double wgs_2, double theta_1x, double theta_1y, double theta_2x, double theta_2y, ,double limit, double sigma_x_init, double sigma_y_init){
+double get_thickness(double l, double L, double x, double tau_xy, double wg_1, double wg_2, double wgs_1, double wgs_2, double theta_1x, double theta_1y, double theta_2x, double theta_2y, double limit, double sigma_x_init, double sigma_y_init){
 	double sigma_x, sigma_x_local, sigma_x_local_prev, sigma_x_global;
 	double sigma_y, sigma_y_local, sigma_y_local_prev, sigma_y_global;
 	double mx, my;
@@ -68,5 +68,5 @@ double get_thickness(double l, double L, double x, double tau_xy, double wg_1, d
 
 
 int main(int argc, char **argv){
-	printf("%d",get_thickness(20, 30, 40, 0.3, 4.98, 5.1, 4.9, 5.01, 9.69e-4, 3.04e-16, 235, 20, 20));
+	printf("%d",get_thickness(20, 30, 40, 0.3, 4.98, 5.1, 4.9, 5.1, 4.9, 5.01, 9.69e-4, 3.04e-16, 235, 20, 20));
 	}
