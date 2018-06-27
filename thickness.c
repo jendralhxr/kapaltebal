@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdlib.h>
 
-double get_thickness(double l, double L, double x, double tau_xy, double wg_1, double wg_2, double wgs_1, double wgs_2, double theta_1, double theta_2, double limit, double sigma_x_init, double sigma_y_init){
+double get_thickness(double l, double L, double x, double tau_xy, double wg_1, double wg_2, double wgs_1, double wgs_2, double theta_1x, double theta_1y, double theta_2x, double theta_2y, ,double limit, double sigma_x_init, double sigma_y_init){
 	double sigma_x, sigma_x_local, sigma_x_local_prev, sigma_x_global;
 	double sigma_y, sigma_y_local, sigma_y_local_prev, sigma_y_global;
 	double mx, my;
@@ -15,15 +15,15 @@ double get_thickness(double l, double L, double x, double tau_xy, double wg_1, d
 	
 	mx= E * pow(thickness,3) / 12 *( \
 			+ wg_1 * (-6/pow(l,2) + 12*x/pow(l,3))
-			+ theta_1 * (4/l -  6*x/pow(l,2))
+			+ theta_1y * (4/l -  6*x/pow(l,2))
 			+ wg_2 * (6/pow(l,2)-12*x/pow(l,3))
-			+ theta_2 * (2/l - 6*x/pow(l,2)) );
+			+ theta_2y * (2/l - 6*x/pow(l,2)) );
 	sigma_x_global= 6 * mx  /  pow(thickness,2);
 	my= -E * pow(thickness,3) / 12 *( \
 		+ wgs_1 * (-6/pow(L,2) + 12*x/pow(L,3))
-		+ theta_1 * (4/L -  6*x/pow(L,2))
+		+ theta_1x * (4/L -  6*x/pow(L,2))
 		+ wgs_2 * (6/pow(L,2)-12*x/pow(L,3))
-		+ theta_2 * (2/L - 6*x/pow(L,2)) );
+		+ theta_2x * (2/L - 6*x/pow(L,2)) );
 	sigma_y_global= 6 * my / pow(thickness,2);
 	sigma_x_local= sigma_x_init - sigma_x_global;
 	sigma_y_local= sigma_y_init - sigma_y_global;
@@ -35,9 +35,9 @@ double get_thickness(double l, double L, double x, double tau_xy, double wg_1, d
 		
 		mx= E * pow(thickness,3) / 12 *( \
 			+ wg_1 * (-6/pow(l,2) + 12*x/pow(l,3))
-			+ theta_1 * (4/l -  6*x/pow(l,2))
+			+ theta_1y * (4/l -  6*x/pow(l,2))
 			+ wg_2 * (6/pow(l,2)-12*x/pow(l,3))
-			+ theta_2 * (2/l - 6*x/pow(l,2)) );
+			+ theta_2y * (2/l - 6*x/pow(l,2)) );
 		sigma_x_global= 6 * mx  /  pow(thickness,2);
 	
 		sigma_y_local_prev= sigma_y_local;
@@ -45,9 +45,9 @@ double get_thickness(double l, double L, double x, double tau_xy, double wg_1, d
 		
 		my= -E * pow(thickness,3) / 12 *( \
 			+ wgs_1 * (-6/pow(L,2) + 12*x/pow(L,3))
-			+ theta_1 * (4/L -  6*x/pow(L,2))
+			+ theta_1x * (4/L -  6*x/pow(L,2))
 			+ wgs_2 * (6/pow(L,2)-12*x/pow(L,3))
-			+ theta_2 * (2/L - 6*x/pow(L,2)) );
+			+ theta_2x * (2/L - 6*x/pow(L,2)) );
 		sigma_y_global= 6 * my / pow(thickness,2);
 	
 		sigma_x= sigma_x_local + sigma_x_global;
