@@ -80,6 +80,7 @@ double get_thickness(double l1, double l2, double x, double dp, double tau_xy, d
 		thickness_y = sqrt(sigma_y_local_prev / sigma_y_local * pow(thickness_prev, 2));
 		thickness = (thickness_x>thickness_y) ? thickness_x : thickness_y;
 		printf("thickness iteration %d\n",iter++);
+		if (abs(thickness - thickness_prev) < 0.01) break; // 0.01 mm is the thickness difference which makes "sense"
 	} while ((sigma_v <= limit) && (iter<500)); // limit said to be 235
 
 	// last known thickness is good
