@@ -1,5 +1,5 @@
 #define POPULATION 20
-#defien GENERATION_MAX 50
+#define GENERATION_MAX 50
 
 void update_designVariableGA(){ // random cross-over
 	double a1, a2, a3, a4, dv;
@@ -7,7 +7,7 @@ void update_designVariableGA(){ // random cross-over
 	
 	char gene[POPULATION][num_mate];
 	char parent[2][num_mate];
-	float cost[2], cost_temp;
+	float cost[2]={6e6,6e6}, cost_temp;
 	int seed;
 	
 	// initialize population
