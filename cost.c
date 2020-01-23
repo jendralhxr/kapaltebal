@@ -1,69 +1,12 @@
+#define POPULATION 20
+int main(void)
+#define GENERATION_MAX 50
+
 int main(void)
 {
 	int i, ite, df;
 	double prev_tt[MMM];  // 前ステップの設計変数 - k.gonde
 	clock_t start, end, lap1, lap2;
-
-	shell_elem_type = 1;  //  長方形 only
-	shell_elem_type = 2;  //  アイソパラメトリック要素
-	shell_elem_type = 3;  //  MITC
-	shell_elem_type = 4;  //  非適合要素
-
-	printf("shell_elem_type = 1 --> 長方形要素\n");
-	printf("shell_elem_type = 2 --> アイソパラメトリック要素\n");
-	printf("shell_elem_type = 3 --> MITC\n");
-	printf("shell_elem_type = 4 --> 非適合要素 under construction\n");
-
-	//printf("shell element type = ");
-	shell_elem_type = 1;  //  長方形 only
-						  //scanf_s("%d", &shell_elem_type);
-	if (shell_elem_type == 1) printf("長方形要素\n");
-	if (shell_elem_type == 2) printf("アイソパラメトリック要素\n");
-	if (shell_elem_type == 3) printf("MITC\n");
-	if (shell_elem_type == 4) printf("非適合要素\n");
-
-	//getchar();
-	printf("Hit Enter Key for continuing computation");
-	//getchar();
-
-	/* 入出力ファイルのオープン */
-	if (fopen_s(&inp_file, "astra_inp.txt", "r") != 0) printf("file astra_inp.txt isn't here\n");
-	if (fopen_s(&out_file, "astra_out.txt", "w") != 0) printf("file astra_inp.txt can't be created\n");
-	if (fopen_s(&str_file, "str.csv", "w") != 0)     printf("file str.csv  can't be created\n");
-	if (fopen_s(&volume_file, "volume.csv", "w") != 0)     printf("file volume.csv  can't be created\n");
-	
-	fprintf(volume_file, "weight,price,weight ratio, price ratio, total ratio\n");
-
-	set_up_param();	        /* 積分点と重みの設定 */
-	get_data1();            /* 節点数、要素数など配列サイズに関するパラメータの入力 */
-	vectorInitialization(); /* ベクトルの初期化 - k.gonde */
-	get_data2();            /* 節点座標、要素結合データなどの入力 */
-
-
-	renum = 1;  /* nodes are renumbered.  リナンバリングする */
-	renum = 0;  /* nodes are not renumbered.  リナンバリングしない */
-	re_num3();  /* 節点番号の付け直し */
-
-	bc_dof_mpc(); /* 境界条件により自由度を縮退する */
-	get_band_mpc(); /* バンド幅、ハーフバンド幅を求める */
-
-
-//-------------------------------INPUT MATERIAL PRICE (START)---------------------------------//
-	for (i = 0; i < num_mate; i++)
-	{
-		tt[i] = 1.0;
-
-		if (mp[4][i] == 188) mate_cost[i] = 60;//gerry
-		else if (mp[4][i] == 252) mate_cost[i] = 80;//gerry
-		else mate_cost[i] = 90;//gerry
-	}
-	//-------------------------------INPUT MATERIAL PRICE (END)---------------------------------//
-
-
-
-	start = clock(); // CPU時間計測開始 - k.gonde
-	lap1 = start;
-//	fprintf(volume_file, "\nStep1\n");
 
 	// coba sini
 	double a1, a2, a3, a4, dv;
